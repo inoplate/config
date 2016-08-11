@@ -1,0 +1,17 @@
+{
+    "name": "inoplate/config",
+    "description": "Inoplate configuration repository",
+    "type": "composer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohammad Roseffendi",
+            "email": "oii@roseffendi.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "phpspec/phpspec": "^3.0"
+    }
+}
