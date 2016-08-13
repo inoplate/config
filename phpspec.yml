@@ -1,0 +1,8 @@
+suites:
+    config_suite: 
+        namespace: Inoplate\Config
+        psr4_prefix: Inoplate\Config
+        stop_on_failure: true
+extensions:
+    PhpSpec\Laravel\Extension\LaravelExtension:
+        framework_path: "../tests/laravel/bootstrap/app.php"
