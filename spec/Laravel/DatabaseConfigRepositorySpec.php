@@ -10,9 +10,10 @@ use Prophecy\Argument;
 
 class DatabaseConfigRepositorySpec extends LaravelObjectBehavior
 {
-    function let(LaravelConfig $laravelConfig, InoplateConfig $inoplateConfig)
+    function let(InoplateConfig $inoplateConfig)
     {
-        $this->beConstructedWith($laravelConfig, $inoplateConfig);
+        $inoplateConfig->all()->shouldBeCalled()->willReturn(['ahc' => 'def']);
+        $this->beConstructedWith($inoplateConfig, []);
     }
 
     function it_is_initializable()
@@ -28,24 +29,6 @@ class DatabaseConfigRepositorySpec extends LaravelObjectBehavior
     function it_should_be_an_array_access()
     {
         $this->shouldImplement(\ArrayAccess::class);
-    }
-
-    function it_decorate_laravel_config(LaravelConfig $laravelConfig)
-    {
-        $laravelConfig->has('app.name')->shouldBeCalled()->willReturn(true);
-        $this->has('app.name')->shouldReturn(true);
-
-        $laravelConfig->get('app.name', null)->shouldBeCalled()->willReturn('My Application');
-        $this->get('app.name')->shouldReturn('My Application');
-
-        $laravelConfig->all()->shouldBeCalled()->willReturn(['app' => ['name' => 'My Application']]);
-        $this->all()->shouldReturn(['app' => ['name' => 'My Application']]);
-
-        $laravelConfig->prepend('app.name', 'My Application')->shouldBeCalled();
-        $this->prepend('app.name', 'My Application');
-
-        $laravelConfig->push('app.name', 'My Application')->shouldBeCalled();
-        $this->push('app.name', 'My Application');
     }
 
     function it_decorate_inoplate_config(InoplateConfig $inoplateConfig)

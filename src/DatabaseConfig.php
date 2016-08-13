@@ -73,6 +73,10 @@ class DatabaseConfig implements Config
         $results = $cached ?: $this->config->all();
         $pivots = [];
 
+        if(!$cached) {
+            $this->cache->put($cacheKey, $results, 1440);
+        }
+
         foreach ($results as $key => $value) {
             $pivots[$value->key] = $value->type === 'serialized' ? unserialize($value->value) : $value->value;
         }
@@ -101,49 +105,7 @@ class DatabaseConfig implements Config
 
         // invalidate cache all
         $cacheKey = $this->getCacheKey('all');
-        $this->uncacheAll();
-    }
-
-    /**
-     * Cache all configuration
-     *
-     * @param int|Carbon|null $expiration
-     * @return void
-     */
-    public function cacheAll($expiration = null)
-    {
-        $cacheKey = $this->getCacheKey('all');
-        $results = $this->config->all();
-
-        if($expiration === -1) {
-            $this->cache->forever($cacheKey, $results);
-        }else {
-            $this->cache->put($cacheKey, $results, $expiration ?: 10);
-        }
-    }
-
-    /**
-     * Uncache all configuration
-     * 
-     * @return void
-     */
-    public function uncacheAll()
-    {
-        $cacheKey = $this->getCacheKey('all');
-
         $this->cache->forget($cacheKey);
-    }
-
-    /**
-     * Determine if all config were cached
-     * 
-     * @return boolean
-     */
-    public function isAllCached()
-    {
-        $cacheKey = $this->getCacheKey('all');
-
-        return $this->cache->has($cacheKey);
     }
 
     /**
