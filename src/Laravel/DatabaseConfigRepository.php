@@ -4,15 +4,11 @@ namespace Inoplate\Config\Laravel;
 
 use ArrayAccess;
 use Illuminate\Contracts\Config\Repository as Contract;
+use Illuminate\Config\Repository as LaraveConfig;
 use Inoplate\Config\Config as InoplateConfig;
 
-class DatabaseConfigRepository implements ArrayAccess, Contract
+class DatabaseConfigRepository extends LaraveConfig
 {
-    /**
-     * @var Illuminate\Contracts\Config\Repository
-     */
-    protected $laravelConfig;
-
     /**
      * @var Inoplate\Config\Config
      */
@@ -21,46 +17,14 @@ class DatabaseConfigRepository implements ArrayAccess, Contract
     /**
      * Create new DatabaseConfigRepository instance
      * 
-     * @param Contract       $laravelConfig
      * @param InoplateConfig $inoplateConfig
      */
-    public function __construct(Contract $laravelConfig, InoplateConfig $inoplateConfig)
+    public function __construct(InoplateConfig $inoplateConfig, array $items = [])
     {
-        $this->laravelConfig = $laravelConfig;
+        parent::__construct($items);
+
         $this->inoplateConfig = $inoplateConfig;
-    }
-
-    /**
-     * Determine if the given configuration value exists.
-     *
-     * @param  string  $key
-     * @return bool
-     */
-    public function has($key)
-    {
-        return $this->laravelConfig->has($key);
-    }
-
-    /**
-     * Get the specified configuration value.
-     *
-     * @param  string  $key
-     * @param  mixed   $default
-     * @return mixed
-     */
-    public function get($key, $default = null)
-    {
-        return $this->laravelConfig->get($key, $default);
-    }
-
-    /**
-     * Get all of the configuration items for the application.
-     *
-     * @return array
-     */
-    public function all()
-    {
-        return $this->laravelConfig->all();
+        $this->overWrite($inoplateConfig);
     }
 
     /**
@@ -76,71 +40,18 @@ class DatabaseConfigRepository implements ArrayAccess, Contract
     }
 
     /**
-     * Prepend a value onto an array configuration value.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
+     * Overwirite existing config by database value
+     * 
+     * @param  InoplateConfig $inoplateConfig
      * @return void
      */
-    public function prepend($key, $value)
+    protected function overWrite(InoplateConfig $inoplateConfig)
     {
-        $this->laravelConfig->prepend($key, $value);
-    }
+        $config = $inoplateConfig->all();
 
-    /**
-     * Push a value onto an array configuration value.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return void
-     */
-    public function push($key, $value)
-    {
-        $this->laravelConfig->push($key, $value);
-    }
-
-    /**
-     * Determine if the given configuration option exists.
-     *
-     * @param  string  $key
-     * @return bool
-     */
-    public function offsetExists($key)
-    {
-        return $this->has($key);
-    }
-
-    /**
-     * Get a configuration option.
-     *
-     * @param  string  $key
-     * @return mixed
-     */
-    public function offsetGet($key)
-    {
-        return $this->get($key);
-    }
-
-    /**
-     * Set a configuration option.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return void
-     */
-    public function offsetSet($key, $value)
-    {
-        $this->laravelConfig->offsetSet($key, $value);
-    }
-
-    /**
-     * Unset a configuration option.
-     *
-     * @param  string  $key
-     * @return void
-     */
-    public function offsetUnset($key)
-    {
-        $this->laravelConfig->offsetUnset($key);
+        // Overrider from file configuration
+        foreach ($config as $key => $value) {
+            parent::set($key, $value);
+        }
     }
 }
