@@ -1,17 +1,40 @@
 {
     "name": "inoplate/config",
     "description": "Inoplate configuration repository",
+    "keywords": ["database", "config", "laravel", "php"],
     "type": "composer",
     "license": "MIT",
     "authors": [
         {
             "name": "Mohammad Roseffendi",
             "email": "oii@roseffendi.com"
-        }
+        }   
     ],
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "Inoplate\\Config\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ],
+        "psr-4": {
+            "Inoplate\\Config\\Tests\\Laravel\\App\\": "tests/laravel/app"
+        }
+    },
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "illuminate/cache": "^5.1"
+    },
     "require-dev": {
-        "phpspec/phpspec": "^3.0"
+        "vlucas/phpdotenv": "^2.3",
+        "phpspec/phpspec": "^3.0",
+        "laravel/laravel": "^5.1",
+        "benconstable/phpspec-laravel": "~3.0@dev",
+        "phpunit/phpunit": "^5.5"
     }
 }
