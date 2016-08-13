@@ -1,6 +1,7 @@
 {
     "name": "inoplate/config",
     "description": "Inoplate configuration repository",
+    "keywords": ["database", "config", "laravel", "php"],
     "type": "composer",
     "license": "MIT",
     "authors": [
