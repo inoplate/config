@@ -38,6 +38,7 @@ class LoadConfiguration
             $loadedFromCache = true;
         }        
 
+        // Load config first
         $app->instance('config', $config = new Repository($items));
 
         // Next we will spin through all of the configuration files in the configuration
@@ -45,14 +46,12 @@ class LoadConfiguration
         // options available to the developer for use in various parts of this app.
         if (! isset($loadedFromCache)) {
             $this->loadConfigurationFiles($app, $config);
-        }
 
-        $databaseRepository = $this->getDatabaseRepository($app);
-
-        // Database has been setted up
-        if($databaseRepository) {
-            $this->overriderFromDb($config, $databaseRepository);
-            $app->instance('config', new DatabaseConfigRepository($config, $databaseRepository));
+            $databaseRepository = $this->getDatabaseRepository($app);
+            // Database has been setted up
+            if($databaseRepository) {
+                $app->instance('config', new DatabaseConfigRepository($databaseRepository, $config->all()));
+            }
         }
 
         $app->detectEnvironment(function () use ($config) {
@@ -75,24 +74,6 @@ class LoadConfiguration
     {
         foreach ($this->getConfigurationFiles($app) as $key => $path) {
             $repository->set($key, require $path);
-        }
-    }
-
-    protected function overriderFromDb(RepositoryContract $repository, DatabaseConfig $dbConfig)
-    {        
-        // Fetch configuration that persisted in database
-        // We need to boot Database Connection, Schema Builder, Filesystem and CacheStore
-        // I hope it has a little impact of application performance
-        $fromDb = $dbConfig->all();
-
-        if(!$dbConfig->isAllCached()) {
-            // cache all config for better performance
-            $dbConfig->cacheAll();
-        }
-
-        // Overrider from file configuration
-        foreach ($fromDb as $key => $value) {
-            $repository->set($key, $value);
         }
     }
 

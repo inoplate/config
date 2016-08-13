@@ -150,6 +150,7 @@ class DatabaseConfigSpec extends ObjectBehavior
         $cacheKey = md5('config::all');
         $results = [];
         $expecteds = [];
+        $pivots = [];
 
         for ($i=0; $i < 10 ; $i++) { 
             $value = new \stdClass;
@@ -168,53 +169,7 @@ class DatabaseConfigSpec extends ObjectBehavior
 
         $cache->get($cacheKey)->shouldBeCalled();
         $repository->all()->shouldBeCalled()->willReturn($results);
+        $cache->put($cacheKey, $results, 1440)->shouldBeCalled();
         $this->all()->shouldBeLike($expecteds);
-    }
-
-    function it_can_cache_all_configuration(Config $repository, Cache $cache)
-    {
-        $cacheKey = md5('config::all');
-
-        $results = [];
-
-        for ($i=0; $i < 10 ; $i++) { 
-            $value = new \stdClass;
-            $value->abc = 'def';
-            $value->ghi = ['jkl'];
-
-            $key = 'val'.$i;
-            $result = new \stdClass;
-            $result->key = $key;
-            $result->value = serialize($value);
-            $result->type = 'serialized';
-
-            $results[] = $result;
-        }
-
-        $repository->all()->shouldBeCalled()->willReturn($results);
-        $cache->put($cacheKey, $results, 10)->shouldBeCalled();
-
-        $this->cacheAll();
-
-        $repository->all()->shouldBeCalled()->willReturn($results);
-        $cache->forever($cacheKey, $results)->shouldBeCalled();
-
-        $this->cacheAll(-1);
-    }
-
-    function it_can_uncache_all_configuration(Cache $cache)
-    {
-        $cacheKey = md5('config::all');
-
-        $cache->forget($cacheKey)->shouldBeCalled();
-        $this->uncacheAll();
-    }
-
-    function it_can_determine_if_all_config_is_cached(Cache $cache)
-    {
-        $cacheKey = md5('config::all');
-
-        $cache->has($cacheKey)->shouldBeCalled()->willReturn(false);
-        $this->isAllCached()->shouldReturn(false);
     }
 }
