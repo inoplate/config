@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fd91d0ff0b1799daaa7b6f1009aa5fd3",
-    "content-hash": "8b88d8e6a6b6d2a9fe89bb818366297b",
+    "hash": "7d007ec7bd1e0a152412dda190ff4c9b",
+    "content-hash": "e3d54a2b32f2f965ab857c9acdf90df3",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -312,12 +312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d209b61750ae10d3572731485164fb455c381e00"
+                "reference": "5cce34bcec0859c4aae232c9fde15d3a44b16dfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d209b61750ae10d3572731485164fb455c381e00",
-                "reference": "d209b61750ae10d3572731485164fb455c381e00",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5cce34bcec0859c4aae232c9fde15d3a44b16dfe",
+                "reference": "5cce34bcec0859c4aae232c9fde15d3a44b16dfe",
                 "shasum": ""
             },
             "require": {
@@ -422,7 +422,7 @@
             "authors": [
                 {
                     "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
+                    "email": "taylor@laravel.com"
                 }
             ],
             "description": "The Laravel Framework.",
@@ -431,7 +431,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-12 01:57:34"
+            "time": "2016-08-13 16:24:21"
         },
         {
             "name": "league/flysystem",
@@ -644,12 +644,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "36c134b53c21a137d450c86a27046022d98574fd"
+                "reference": "7a026991092624a245d300685ce09ff5b4d110e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/36c134b53c21a137d450c86a27046022d98574fd",
-                "reference": "36c134b53c21a137d450c86a27046022d98574fd",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/7a026991092624a245d300685ce09ff5b4d110e0",
+                "reference": "7a026991092624a245d300685ce09ff5b4d110e0",
                 "shasum": ""
             },
             "require": {
@@ -657,6 +657,7 @@
                 "symfony/translation": "~2.6|~3.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "~1.11",
                 "phpunit/phpunit": "~4.0|~5.0"
             },
             "type": "library",
@@ -688,7 +689,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2016-06-27 17:44:29"
+            "time": "2016-07-22 14:20:35"
         },
         {
             "name": "nikic/php-parser",
@@ -1985,12 +1986,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/laravel.git",
-                "reference": "788a648165bd254a403193a84327db427079a7f4"
+                "reference": "86676aa02e190cc914ae132f4b7245f3f09eae1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/laravel/zipball/788a648165bd254a403193a84327db427079a7f4",
-                "reference": "788a648165bd254a403193a84327db427079a7f4",
+                "url": "https://api.github.com/repos/laravel/laravel/zipball/86676aa02e190cc914ae132f4b7245f3f09eae1f",
+                "reference": "86676aa02e190cc914ae132f4b7245f3f09eae1f",
                 "shasum": ""
             },
             "require": {
@@ -2022,7 +2023,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-12 02:31:42"
+            "time": "2016-08-14 02:26:27"
         },
         {
             "name": "myclabs/deep-copy",
@@ -2256,12 +2257,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "d17bebf3b403c346a7bea07a1b9fb1a8cbd00f96"
+                "reference": "400ecda31b1203369b004c8937c43105e7078667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/d17bebf3b403c346a7bea07a1b9fb1a8cbd00f96",
-                "reference": "d17bebf3b403c346a7bea07a1b9fb1a8cbd00f96",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/400ecda31b1203369b004c8937c43105e7078667",
+                "reference": "400ecda31b1203369b004c8937c43105e7078667",
                 "shasum": ""
             },
             "require": {
@@ -2330,7 +2331,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2016-08-08 13:13:11"
+            "time": "2016-08-12 14:52:30"
         },
         {
             "name": "phpspec/prophecy",
@@ -3294,12 +3295,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "80944546b4014ce240dbeafabc2a3aec9e4794e1"
+                "reference": "5b61eed69891b2add260a3741660fa68c38900ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/80944546b4014ce240dbeafabc2a3aec9e4794e1",
-                "reference": "80944546b4014ce240dbeafabc2a3aec9e4794e1",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/5b61eed69891b2add260a3741660fa68c38900ae",
+                "reference": "5b61eed69891b2add260a3741660fa68c38900ae",
                 "shasum": ""
             },
             "require": {
@@ -3341,7 +3342,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-08-09 13:44:53"
+            "time": "2016-08-13 18:49:42"
         },
         {
             "name": "webmozart/assert",

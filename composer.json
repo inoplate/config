@@ -28,12 +28,12 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "illuminate/cache": "^5.1"
+        "illuminate/cache": "^5.3"
     },
     "require-dev": {
         "vlucas/phpdotenv": "^2.3",
         "phpspec/phpspec": "^3.0",
-        "laravel/laravel": "^5.1",
+        "laravel/laravel": "dev-develop",
         "benconstable/phpspec-laravel": "~3.0@dev",
         "phpunit/phpunit": "^5.5"
     }
