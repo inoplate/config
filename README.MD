@@ -16,7 +16,7 @@ $config->set($key, $value, $cacheExpiration); // set config value to database an
 
 ## Integration
 
-Currently this package only provide integration to [Laravel  ^5.1](https://www.laravel.com). To integrate, please follow the steps described below.
+Currently this package only provide integration to [Laravel  ^5.3](https://www.laravel.com). To integrate, please follow the steps described below.
 >
     1. Add Inoplate\Config\Laravel\ConfigServiceProvider to your providers configuration.
     2. Migrate your database.
@@ -32,7 +32,7 @@ Currently this package only provide integration to [Laravel  ^5.1](https://www.l
 > 
     1. This package will only persist config via set() call. Call via push(), prepend() and ArrayAccess will not persisted.
     2. This package will do necessary cache under the hood
-    3. Use fully qualified name such as **app.name** and it's value. This package is not supporting nested key such as [app => ['name' => 'My Application', 'site' => 'https://mysites.com']] yet
+    3. Use fully qualified name such as "app.name" and it's value. This package is not supporting nested key such as [app => ['name' => 'My Application', 'site' => 'https://mysites.com']] yet
     
 **Running the tests**
 

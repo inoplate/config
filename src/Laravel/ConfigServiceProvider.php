@@ -21,12 +21,5 @@ class ConfigServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        $this->app->bind('Inoplate\Config\Config',
-            'Inoplate\Config\DatabaseConfig');
-
-        $this->app->bind('Inoplate\Config\Repositories\Config', 
-            'Inoplate\Config\Laravel\EloquentConfig');
-    }
+    public function register() {}
 }
